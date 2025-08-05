@@ -2,19 +2,19 @@ package eu.senla;
 
 import eu.senla.core.DriverManager;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest {
 
   protected WebDriver driver;
 
-  @BeforeTest
+  @BeforeMethod
   void init() {
     driver = DriverManager.getDriver();
   }
 
-  @AfterTest
+  @AfterMethod
   void tearDown() {
     DriverManager.quitDriver();
   }

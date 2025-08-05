@@ -47,8 +47,6 @@ spotless {
 checkstyle {
     toolVersion = '10.12.1'
     configFile = file('config/checkstyle/checkstyle.xml')
-    println "Checkstyle config path: " + file('config/checkstyle/checkstyle.xml').absolutePath
-
 }
 
 tasks.withType(Checkstyle).configureEach {
@@ -60,5 +58,14 @@ tasks.withType(Checkstyle).configureEach {
 }
 
 test {
-    useTestNG()
+    useTestNG() {
+        suites "src/test/resources/config/${config}.xml"
+    }
+
+    systemProperty "browser", project.findProperty("browser")
+    systemProperty "threadCount", project.findProperty("threadCount") ?: "1"
+
+    options {
+        listeners.add("eu.senla.listeners.SuiteXmlTransformer")
+    }
 }

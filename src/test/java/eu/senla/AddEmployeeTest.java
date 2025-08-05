@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import eu.senla.entities.Employee;
 import eu.senla.pages.LoginPage;
 import eu.senla.pages.PersonalDetailsPage;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
@@ -13,6 +14,7 @@ public class AddEmployeeTest extends BaseTest {
   private Employee employee;
 
 
+  @BeforeTest
   void generateTestData() {
     Faker faker = new Faker();
     employee = Employee.builder()
