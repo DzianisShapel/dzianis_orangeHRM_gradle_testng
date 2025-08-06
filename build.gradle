@@ -67,5 +67,6 @@ test {
 
     options {
         listeners.add("eu.senla.listeners.SuiteXmlTransformer")
+        listeners.add("eu.senla.listeners.ScreenshotListener")
     }
 }
