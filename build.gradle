@@ -64,6 +64,9 @@ test {
 
     systemProperty "browser", project.findProperty("browser")
     systemProperty "threadCount", project.findProperty("threadCount") ?: "1"
+    systemProperty "selenoidEnable", project.findProperty("selenoidEnable") ?: false
+    systemProperty "selenoidUrl", project.findProperty("selenoidUrl")
+
 
     options {
         listeners.add("eu.senla.listeners.SuiteXmlTransformer")
