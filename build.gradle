@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'com.diffplug.spotless' version '6.25.0'
     id 'checkstyle'
+    id 'io.qameta.allure' version '2.12.0'
 }
 
 group = 'eu.senla'
@@ -9,6 +10,17 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+}
+
+allure {
+    version = '2.27.0' // Allure report version
+    adapter {
+        frameworks {
+            testng {
+                adapterVersion.set("2.27.0")
+            }
+        }
+    }
 }
 
 ext {
@@ -27,6 +39,8 @@ dependencies {
     annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     testCompileOnly group: 'org.projectlombok', name: 'lombok', version: lombokVersion
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+    //allure - testNg adapter
+    implementation 'io.qameta.allure:allure-testng:2.27.0'
 }
 
 spotless {
@@ -69,6 +83,7 @@ test {
 
 
     options {
+        listeners.add("io.qameta.allure.testng.AllureTestNg")
         listeners.add("eu.senla.listeners.SuiteXmlTransformer")
         listeners.add("eu.senla.listeners.ScreenshotListener")
     }

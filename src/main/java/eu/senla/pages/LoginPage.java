@@ -1,6 +1,7 @@
 package eu.senla.pages;
 
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,21 +18,25 @@ public class LoginPage extends BasePage {
     super(driver);
   }
 
+  @Step("Enter username")
   public LoginPage enterUsername(String username) {
     driver.findElement(usernameField).sendKeys(username);
     return this;
   }
 
+  @Step("Enter password")
   public LoginPage enterPassword(String password) {
     driver.findElement(passwordField).sendKeys(password);
     return this;
   }
 
+  @Step("Submit credentials")
   public LoginPage submit() {
     driver.findElement(submitButton).click();
     return this;
   }
 
+  @Step("Login to app")
   public DashBoardPage loginAs(String username, String password) {
     enterUsername(username).enterPassword(password).submit();
     return new DashBoardPage(driver);
