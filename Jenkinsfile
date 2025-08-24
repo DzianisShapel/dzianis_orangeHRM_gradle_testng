@@ -29,27 +29,14 @@ pipeline {
                         -PselenoidEnable=${params.selenoidEnable} \
                 """
             }
-        }
-
-        stage('Allure Report') {
-            steps {
-                allure([
-                    includeProperties: false,
-                    jdk: '',
-                    results: [[path: 'build/allure-results']]
-                ])
+            post {
+                always {
+                    allure includeProperties:
+                            false,
+                            jdk: '',
+                            results: [[path: 'build/allure-results']]
+                }
             }
-        }
-    }
-
-    post {
-        always {
-            archiveArtifacts artifacts: 'build/reports/tests/test/**', allowEmptyArchive: true
-        }
-        failure {
-            mail to: 'dzianis283@gmail.com',
-                 subject: "❌ UI Tests Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                 body: "Check Jenkins job for details: ${env.BUILD_URL}"
         }
     }
 }
