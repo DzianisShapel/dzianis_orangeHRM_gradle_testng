@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://your.git.repo.url.git'
+                git branch: 'master', url: 'https://github.com/DzianisShapel/dzianis_orangeHRM_gradle_testng.git', credentialsId: 'github-token'
             }
         }
 
