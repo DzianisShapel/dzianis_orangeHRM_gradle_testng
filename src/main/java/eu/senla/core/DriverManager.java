@@ -49,8 +49,7 @@ public class DriverManager {
                     }
                     chromeOptions.setCapability("selenoid:options", Map.of(
                             "enableVNC", true,
-                            "enableVideo", true,
-                            "sessionTimeout", "2m"
+                            "enableVideo", true
                     ));
                     capabilities.merge(chromeOptions);
                 }
