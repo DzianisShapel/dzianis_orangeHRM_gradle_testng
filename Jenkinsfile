@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        allure 'Allure Jenkins Plugin'   // Must match the name you configured in Jenkins → Manage Jenkins → Tools → Allure Commandline
+        allure 'allure'   // Must match the name you configured in Jenkins → Manage Jenkins → Tools → Allure Commandline
     }
 
     parameters {
